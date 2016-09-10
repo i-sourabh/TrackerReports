@@ -1,4 +1,18 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath rootProject.ext.plugin.androidPlugin
+        classpath rootProject.ext.plugin.retroLambda
+        classpath rootProject.ext.plugin.androidApt
+    }
+}
+
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
+
 
 android {
     compileSdkVersion 24
@@ -17,10 +31,43 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'LICENSE'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+    configurations {
+        all*.exclude module: 'commons-logging'
+    }
+
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
+
+//    compile project(':..:dhis2-android-sdk:app')
+//    compile project(':ui')
+//    compile project(':utils')
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.0'
+    def dependency = rootProject.ext.dependency
+    compile dependency.dagger
+    apt dependency.daggerCompiler
+    compile dependency.recyclerviewv7
+    compile dependency.butterknife
+    compile dependency.rxAndroid
+    compile dependency.rxJava
+    compile 'com.android.support:multidex:1.0.0'
 }

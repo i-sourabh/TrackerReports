@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../...iml" filepath="$PROJECT_DIR$/../...iml" />
+      <module fileurl="file://C:/Dhis-Android.iml" filepath="C:/Dhis-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/TrackerReports.iml" filepath="$PROJECT_DIR$/TrackerReports.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/TrackerReports-app.iml" filepath="$PROJECT_DIR$/app/TrackerReports-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dhis2-android-sdk/dhis2-android-sdk.iml" filepath="$PROJECT_DIR$/../dhis2-android-sdk/dhis2-android-sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dhis2-android-sdk/app/dhis2-android-sdk-app.iml" filepath="$PROJECT_DIR$/../dhis2-android-sdk/app/dhis2-android-sdk-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dhis2-android-new-sdk/ui/ui.iml" filepath="$PROJECT_DIR$/../dhis2-android-new-sdk/ui/ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dhis2-android-new-sdk/utils/utils.iml" filepath="$PROJECT_DIR$/../dhis2-android-new-sdk/utils/utils.iml" />
     </modules>
   </component>
 </project>

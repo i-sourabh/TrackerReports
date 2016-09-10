@@ -3,10 +3,12 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url "https://raw.github.com/Raizlabs/maven-releases/master/releases" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.3'
-
+        classpath 'com.raizlabs:Griddle:1.0.3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -15,9 +17,90 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url "https://raw.github.com/Raizlabs/maven-releases/master/releases" }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    // Dhis2 sdk config version ------------
+    // SDK version.
+    versionCode = 2016031832
+    versionName = "1.1.08"
+
+    // Compilation configuration.
+    minSdkVersion = 14
+    compileSdkVersion = 23
+    targetSdkVersion = 23
+    buildToolsVersion = "23.0.3"
+
+    // -------------------------------------
+    // App config version ------------------
+    // Android support version
+    androidPluginVersion = '1.3.0'
+    androidAptVersion = '1.4'
+    androidSupportVersion = '22.1.0'
+
+    //Dependency support version
+    retroLambdaVersion = '3.2.2'
+    daggerVersion = '2.0'
+    butterKnifeVerion = '7.0.1'
+    picassoVersion = '2.5.2'
+    rxAndroidVersion = '1.1.0'
+    rxJavaVersion = '1.1.0'
+    ottoVersion = '1.3.8'
+    generatedAnnotationVersion = '10.0-b28'
+    junitVersion = '4.12'
+    configuration = [
+            buildToolsVersion: "23.0.2",
+            minSdkVersion    : 14,
+            compileSdkVersion: 23,
+            targetSdkVersion : 23,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    libraries = [
+            // android libs
+            supportVersion    : "23.3.0",
+            progressBarVersion: "1.2.0",
+
+            // testing libs
+            jUnitVersion      : "4.12"
+    ]
+    // Configuration.
+    plugin = [
+            androidPlugin: "com.android.tools.build:gradle:${androidPluginVersion}",
+            retroLambda  : "me.tatarka:gradle-retrolambda:${retroLambdaVersion}",
+            androidApt   : "com.neenbedankt.gradle.plugins:android-apt:${androidAptVersion}"
+    ]
+
+    dependency = [
+            // Android Support Libraries
+            appcompatv7          : "com.android.support:appcompat-v7:${androidSupportVersion}",
+            supportDesign        : "com.android.support:design:${androidSupportVersion}",
+            gridlayoutv7         : "com.android.support:gridlayout-v7:${androidSupportVersion}",
+            recyclerviewv7       : "com.android.support:recyclerview-v7:${androidSupportVersion}",
+
+            // Dependencies Injection.
+            dagger               : "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler       : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            generatedAnnotation  : "org.glassfish:javax.annotation:${generatedAnnotationVersion}",
+
+            // View injection.
+            butterknife          : "com.jakewharton:butterknife:${butterKnifeVerion}",
+
+            // REST client
+            otto                 : "com.squareup:otto:${ottoVersion}",
+            rxAndroid            : "io.reactivex:rxandroid:${rxAndroidVersion}",
+            rxJava               : "io.reactivex:rxjava:${rxJavaVersion}",
+
+            //Testing
+            jUnit                : "junit:junit:${junitVersion}",
+
+    ]
 }
